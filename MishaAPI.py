@@ -21,8 +21,6 @@ class URLhandler:
     def schedule(self):
         return self.url.format('Schedule', 'Today')
 
-    def queues(self):
-        return self.url.format('Queues', self.token)
 
 
 class URLSchedule:
