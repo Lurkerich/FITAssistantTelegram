@@ -1,6 +1,5 @@
 import os
-import time
-from datetime import time, datetime, timezone
+from datetime import datetime, timezone
 
 from dateutil.relativedelta import relativedelta
 from dotenv import load_dotenv
@@ -8,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-# https://rasp.omgtu.ru/api/schedule/group/375?start=2021.05.10&finish=2021.05.16
 class URLhandler:
     def __init__(self):
         self.token = os.getenv("FIRASS")
@@ -41,4 +39,3 @@ class URLSchedule:
 
     def date(self):
         return self.d1
-
