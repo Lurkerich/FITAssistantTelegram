@@ -1,0 +1,1 @@
+bot: python my1.py
