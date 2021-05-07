@@ -31,50 +31,74 @@ async def send_help(message):
 
 @dp.message_handler(regexp=r'Кейс[\s_]+технологии')
 async def send_case(message):
-    await message.answer(requests.get(url.subjects()).json()[0].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[0].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[0].get('title')
+    subject += requests.get(url.subjects()).json()[0].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' + requests.get(url.subjects()).json()[0].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp='Алгоритмы')
 async def send_alg(message):
-    await message.answer(requests.get(url.subjects()).json()[1].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[1].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[1].get('title')
+    subject += requests.get(url.subjects()).json()[1].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[1].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp='БЖД')
 async def send_bgd(message):
-    await message.answer(requests.get(url.subjects()).json()[2].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[2].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[2].get('title')
+    subject += requests.get(url.subjects()).json()[2].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[2].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp='ОИБ')
 async def send_oib(message):
-    await message.answer(requests.get(url.subjects()).json()[3].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[3].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[3].get('title')
+    subject += requests.get(url.subjects()).json()[3].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[3].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp=r'Машинное[\s_]+обучение')
 async def send_ml(message):
-    await message.answer(requests.get(url.subjects()).json()[4].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[4].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[4].get('title')
+    subject += requests.get(url.subjects()).json()[4].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[4].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp=r'Сетевые[\s_]+технологии')
 async def send_st(message):
-    await message.answer(requests.get(url.subjects()).json()[5].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[5].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[5].get('title')
+    subject += requests.get(url.subjects()).json()[5].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[5].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp='Физ-ра')
 async def send_fiz(message):
-    await message.answer(requests.get(url.subjects()).json()[6].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[6].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[6].get('title')
+    subject += requests.get(url.subjects()).json()[6].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[6].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp='Экономика')
 async def send_eco(message):
-    await message.answer(requests.get(url.subjects()).json()[7].get('title'))
-    await message.answer(requests.get(url.subjects()).json()[7].get('description'))
+    subject = ''
+    subject += requests.get(url.subjects()).json()[7].get('title')
+    subject += requests.get(url.subjects()).json()[7].get('description') + '\n\r\n'
+    subject += 'Ссылка на диск: ' +requests.get(url.subjects()).json()[7].get('url')
+    await message.answer(subject)
 
 
 @dp.message_handler(regexp='Очередь')
