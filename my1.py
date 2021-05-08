@@ -35,7 +35,7 @@ async def send_help(message):
 async def send_case(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[0].get('title')
+    subject += infomation[0].get('title') + '\r\n'
     subject += infomation.get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[0].get('url')
     await message.answer(subject)
@@ -45,7 +45,7 @@ async def send_case(message):
 async def send_alg(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[1].get('title')
+    subject += infomation[1].get('title') + '\r\n'
     subject += infomation[1].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[1].get('url')
     await message.answer(subject)
@@ -55,7 +55,7 @@ async def send_alg(message):
 async def send_bgd(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[2].get('title')
+    subject += infomation[2].get('title') + '\r\n'
     subject += infomation[2].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[2].get('url')
     await message.answer(subject)
@@ -65,7 +65,7 @@ async def send_bgd(message):
 async def send_oib(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[3].get('title')
+    subject += infomation[3].get('title') + '\r\n'
     subject += infomation[3].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[3].get('url')
     await message.answer(subject)
@@ -75,7 +75,7 @@ async def send_oib(message):
 async def send_ml(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[4].get('title')
+    subject += infomation[4].get('title') + '\r\n'
     subject += infomation[4].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[4].get('url')
     await message.answer(subject)
@@ -85,7 +85,7 @@ async def send_ml(message):
 async def send_st(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[5].get('title')
+    subject += infomation[5].get('title') + '\r\n'
     subject += infomation[5].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[5].get('url')
     await message.answer(subject)
@@ -95,7 +95,7 @@ async def send_st(message):
 async def send_fiz(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[6].get('title')
+    subject += infomation[6].get('title') + '\r\n'
     subject += infomation[6].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[6].get('url')
     await message.answer(subject)
@@ -105,7 +105,7 @@ async def send_fiz(message):
 async def send_eco(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
-    subject += infomation[7].get('title')
+    subject += infomation[7].get('title') + '\r\n'
     subject += infomation[7].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[7].get('url')
     await message.answer(subject)
