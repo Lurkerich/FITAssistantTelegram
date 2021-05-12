@@ -28,7 +28,6 @@ class URLSchedule:
     def __init__(self):
         self.d1 = datetime.now(timezone.utc).strftime("%Y.%m.%d")
         self.urls = 'https://rasp.omgtu.ru/api/schedule/group/375?start={0}&finish={1}'
-
     def schedule(self):
         d1 = datetime.now(timezone.utc).strftime("%Y.%m.%d")
         d2 = (datetime.now(timezone.utc)) + relativedelta(days=+6)

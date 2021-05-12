@@ -36,7 +36,7 @@ async def send_case(message):
     infomation = requests.get(url.subjects()).json()
     subject = ''
     subject += infomation[0].get('title') + '\r\n'
-    subject += infomation.get('description') + '\n\r\n'
+    subject += infomation[0].get('description') + '\n\r\n'
     subject += 'Ссылка на диск: ' + infomation[0].get('url')
     await message.answer(subject)
 
