@@ -1,19 +1,15 @@
 import os
 
 import requests
+from aiogram import Bot, Dispatcher, executor
 from dotenv import load_dotenv
-from aiogram import Bot, Dispatcher, executor, types
+
 import KeyBoards
-#
-#
 from MishaAPI import URLhandler, URLSchedule
 
 load_dotenv()
 bot = Bot(token=os.getenv('APIBOT'))
 dp = Dispatcher(bot)
-r = os.getenv('FIRASS')
-url = URLhandler()
-urls = URLSchedule()
 
 
 @dp.message_handler(commands=['start'])
@@ -33,7 +29,7 @@ async def send_help(message):
 
 @dp.message_handler(regexp=r'Кейс[\s_]+технологии')
 async def send_case(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[0].get('title') + '\r\n'
     subject += infomation[0].get('description') + '\n\r\n'
@@ -43,7 +39,7 @@ async def send_case(message):
 
 @dp.message_handler(regexp='Алгоритмы')
 async def send_alg(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[1].get('title') + '\r\n'
     subject += infomation[1].get('description') + '\n\r\n'
@@ -53,7 +49,7 @@ async def send_alg(message):
 
 @dp.message_handler(regexp='БЖД')
 async def send_bgd(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[2].get('title') + '\r\n'
     subject += infomation[2].get('description') + '\n\r\n'
@@ -63,7 +59,7 @@ async def send_bgd(message):
 
 @dp.message_handler(regexp='ОИБ')
 async def send_oib(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[3].get('title') + '\r\n'
     subject += infomation[3].get('description') + '\n\r\n'
@@ -73,7 +69,7 @@ async def send_oib(message):
 
 @dp.message_handler(regexp=r'Машинное[\s_]+обучение')
 async def send_ml(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[4].get('title') + '\r\n'
     subject += infomation[4].get('description') + '\n\r\n'
@@ -83,7 +79,7 @@ async def send_ml(message):
 
 @dp.message_handler(regexp=r'Сетевые[\s_]+технологии')
 async def send_st(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[5].get('title') + '\r\n'
     subject += infomation[5].get('description') + '\n\r\n'
@@ -93,7 +89,7 @@ async def send_st(message):
 
 @dp.message_handler(regexp='Физ-ра')
 async def send_fiz(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[6].get('title') + '\r\n'
     subject += infomation[6].get('description') + '\n\r\n'
@@ -103,7 +99,7 @@ async def send_fiz(message):
 
 @dp.message_handler(regexp='Экономика')
 async def send_eco(message):
-    infomation = requests.get(url.subjects()).json()
+    infomation = requests.get(URLhandler.subjects()).json()
     subject = ''
     subject += infomation[7].get('title') + '\r\n'
     subject += infomation[7].get('description') + '\n\r\n'
@@ -118,7 +114,7 @@ async def send_eco(message):
 
 @dp.message_handler(regexp='Преподаватели')
 async def send_teachers(message):
-    infomation = requests.get(url.teachers()).json()
+    infomation = requests.get(URLhandler.teachers()).json()
     teachers = ''
     for i in range(len(infomation)):
         teachers += infomation[i].get('lastName') + '\r\n'
@@ -127,7 +123,6 @@ async def send_teachers(message):
         teachers += infomation[i].get('email') + '\r\n'
         if infomation[i].get('phoneNumber') == "Не предоставлен":
             teachers += "\r\n"
-
         else:
             teachers += infomation[i].get('phoneNumber')
             teachers += "\r\n\r\n"
@@ -137,23 +132,18 @@ async def send_teachers(message):
 @dp.message_handler(regexp='Расписание')
 async def send_schedule(message):
     schedule = ''
-    infomation = requests.get(urls.schedule()).json()
-    n = 1
+    infomation = requests.get(URLSchedule.schedule()).json()
     for i in range(len(infomation)):
-        if infomation[i].get('date') == urls.date():
-            schedule += str(n) + '. ' + infomation[i].get('discipline') + '\r\n'
-            schedule += 'Аудитория: ' + infomation[i].get('auditorium') + '\r\n'
-            schedule += 'Тип занятия: ' + infomation[i].get('kindOfWork') + '\r\n'
-            schedule += 'Продолжительность: ' + infomation[i].get('beginLesson') + '-' + \
-                        requests.get(urls.schedule()).json()[i].get('endLesson') + '\r\n'
-            schedule += 'Преподаватель: ' + infomation[i].get('lecturer') + '\r\n'
-            if infomation[i].get('subGroup') is None:
-                schedule += '\r\n\r\n'
-            else:
-                schedule += 'Подгруппа: ' + infomation[i].get('subGroup') + '\r\n\r\n'
-            n += 1
+        schedule += str(i + 1) + '. ' + infomation[i].get('discipline') + '\r\n'
+        schedule += 'Аудитория: ' + infomation[i].get('auditorium') + '\r\n'
+        schedule += 'Тип занятия: ' + infomation[i].get('kindOfWork') + '\r\n'
+        schedule += 'Продолжительность: ' + infomation[i].get('beginLesson') + '-' + \
+                    infomation[i].get('endLesson') + '\r\n'
+        schedule += 'Преподаватель: ' + infomation[i].get('lecturer') + '\r\n'
+        if infomation[i].get('subGroup') is None:
+            schedule += '\r\n'
         else:
-            continue
+            schedule += 'Подгруппа: ' + infomation[i].get('subGroup') + '\r\n\r\n'
     if schedule == '':
         schedule = 'Сегодня нет пар'
         await message.answer(schedule)
